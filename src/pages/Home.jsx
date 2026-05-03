@@ -6,6 +6,7 @@ import MissionVision from "../components/MissionVision";
 import Services from "../components/Services";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Team from "../components/Team";
+import Resources from "../components/Resources";
 import Testimonials from "../components/Testimonials";
 import ContactForm from "../components/ContactForm";
 import Location from "../components/Location";
@@ -15,17 +16,19 @@ import Stats from "../components/Stats";
 const Home = () => {
   return (
     <>
-      
       <Navbar />
 
       <Hero />
-      <Stats />
+      {/* <Stats /> */}
       <About />
-      <MissionVision />
+      {/* <MissionVision /> */}
       <Services />
+      <Resources />
       <WhyChooseUs />
       <Team />
-      <Testimonials />
+
+      {/* <Testimonials /> */}
+
       <ContactForm />
       <Location />
       <Footer />

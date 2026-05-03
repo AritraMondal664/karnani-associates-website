@@ -1,33 +1,3 @@
-// const Testimonials = () => {
-//   const data = [
-//     "Highly professional and reliable audit services.",
-//     "Excellent GST support and advisory.",
-//     "Very responsive and knowledgeable team.",
-//   ];
-
-//   return (
-//     <div className="py-16 px-4 bg-white text-center">
-//       <h2 className="text-3xl font-bold mb-8">
-//         What Our Clients Say
-//       </h2>
-
-//       <div className="max-w-6xl mx-auto grid gap-6">
-//         {data.map((item, index) => (
-//           <div key={index} className="p-6 shadow rounded-lg">
-//             "{item}"
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Testimonials;
-
-
-
-
-
 import { motion } from "framer-motion";
 import { revealUp } from "../utils/reveal";
 

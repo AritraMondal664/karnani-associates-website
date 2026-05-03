@@ -6,6 +6,7 @@ import { revealUp } from "../utils/reveal";
 const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: "",
+    organization: "",
     email: "",
     phone: "",
     service: "",
@@ -27,23 +28,25 @@ const ContactForm = () => {
 
     emailjs
       .send(
-        "service_8mflq3o",
-        "template_vpalhcp",
+        "service_qbr6ok9",
+        "template_cet3doj",
         {
           name: formData.name,
+          organization: formData.organization,
           email: formData.email,
           phone: formData.phone,
           service: formData.service,
           message: formData.message,
         },
-        "Cz0kbzhCdCx0_GgBB"
+        "eHx1zrJkSSI_vEHm6"
       )
       .then(
         () => {
-          alert("Message sent successfully!");
+          alert("Consultation request sent successfully!");
           setLoading(false);
           setFormData({
             name: "",
+            organization: "",
             email: "",
             phone: "",
             service: "",
@@ -52,7 +55,7 @@ const ContactForm = () => {
         },
         (error) => {
           console.error(error);
-          alert("Failed to send message.");
+          alert("Failed to send request.");
           setLoading(false);
         }
       );
@@ -61,102 +64,178 @@ const ContactForm = () => {
   return (
     <motion.section
       id="contact"
-      className="py-20 px-4 bg-white"
+      className="py-16 md:py-24 px-4 bg-gradient-to-b from-white to-blue-50"
       variants={revealUp}
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
     >
-      
-      <div className="max-w-6xl mx-auto bg-white p-8 rounded-xl shadow-xl border">
-        
-        {/* Heading */}
-        <h2 className="text-3xl font-bold text-center mb-4">
-          Request a Callback
-        </h2>
+      <div className="max-w-7xl mx-auto">
 
-        <p className="text-center text-gray-600 mb-8">
-          Fill out the form and our team will get back to you shortly.
+        {/* Section Label */}
+        <p className="uppercase tracking-[0.35em] text-sm text-[#0D2B52] font-semibold text-center mb-4">
+          Get In Touch
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          
-          {/* Name + Email */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+        {/* Heading */}
+        <h2 className="text-4xl sm:text-5xl font-bold text-center text-[#0D2B52] mb-6">
+          Let’s talk.
+        </h2>
 
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+        {/* Subheading */}
+        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-14 text-lg leading-relaxed">
+          Whether it’s a one-off opinion or a long-term mandate, the first
+          conversation is on us.
+        </p>
+
+        {/* Contact Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white rounded-3xl shadow-xl border border-gray-100 p-6 md:p-10">
+
+          {/* Left Side - Office Details */}
+          <div className="bg-gradient-to-br from-[#0D2B52] via-[#163d6b] to-[#0D2B52] rounded-3xl p-8 text-white">
+            <h3 className="text-3xl font-bold mb-8">
+              Office
+            </h3>
+
+            <div className="space-y-6">
+              <div>
+                <p className="uppercase text-sm tracking-[0.25em] text-blue-200 mb-2">
+                  Address
+                </p>
+
+                <p className="text-lg leading-relaxed">
+                  4A Pollock Street,
+                  <br />
+                  Kolkata – 700001
+                </p>
+              </div>
+
+              <div>
+                <p className="uppercase text-sm tracking-[0.25em] text-blue-200 mb-2">
+                  Phone
+                </p>
+
+                <p className="text-lg">
+                  033-2235 0358
+                </p>
+                {/* <br /> */}
+                  +91 9804742176
+              </div>
+
+              <div>
+                <p className="uppercase text-sm tracking-[0.25em] text-blue-200 mb-2">
+                  Email
+                </p>
+
+                <p className="text-lg break-all">
+                  aadarsh.kabra@dkk.co.in
+                </p>
+              </div>
+
+              <div>
+                <p className="uppercase text-sm tracking-[0.25em] text-blue-200 mb-2">
+                  Office Hours
+                </p>
+
+                <p className="text-lg">
+                  Mon – Sat 10:00 AM – 7:00 PM
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Phone + Service */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+          {/* Right Side - Form */}
+          <div className="mt-6 lg:mt-0">
+            <form onSubmit={handleSubmit} className="space-y-5">
 
-            <select
-              name="service"
-              value={formData.service}
-              onChange={handleChange}
-              required
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select Service</option>
-              <option>Audit & Assurance</option>
-              <option>Income Tax</option>
-              <option>GST</option>
-              <option>Corporate Advisory</option>
-              <option>Accounting</option>
-              <option>FP&A</option>
-              <option>Valuation</option>
-              <option>Other</option>
-            </select>
+              {/* Full Name + Organization */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0D2B52]"
+                />
+
+                <input
+                  type="text"
+                  name="organization"
+                  placeholder="Organisation"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0D2B52]"
+                />
+              </div>
+
+              {/* Email + Phone */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0D2B52]"
+                />
+
+                <input
+                  type="text"
+                  name="phone"
+                  placeholder="Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0D2B52]"
+                />
+              </div>
+
+              {/* Service */}
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                required
+                className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0D2B52]"
+              >
+                <option value="">Select Interest Area</option>
+                <option>Audit & Assurance</option>
+                <option>Accounting & Reporting</option>
+                <option>M&A and Restructuring</option>
+                <option>Direct Tax</option>
+                <option>GST & Indirect Tax</option>
+                <option>Corporate Law & Regulatory</option>
+                <option>Project Finance & Funding</option>
+                <option>Family Office Advisory</option>
+              </select>
+
+              {/* Message */}
+              <textarea
+                name="message"
+                placeholder="Tell us about your requirement"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows="5"
+                className="w-full p-4 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0D2B52]"
+              ></textarea>
+
+              {/* Button */}
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full bg-[#0D2B52] text-white py-4 rounded-xl font-semibold shadow-md hover:bg-[#163d6b] hover:shadow-lg hover:scale-[1.02] transition duration-300"
+              >
+                {loading ? "Sending..." : "Request a Consultation"}
+              </button>
+
+            </form>
           </div>
 
-          {/* Message */}
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows="4"
-            className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          ></textarea>
-
-          {/* Button */}
-          <button
-            type="submit"
-            disabled={loading}
-            // className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition font-semibold"
-            className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg hover:scale-[1.02] transition duration-300"
-          >
-            {loading ? "Sending..." : "Send Message"}
-          </button>
-
-        </form>
+        </div>
       </div>
     </motion.section>
   );
