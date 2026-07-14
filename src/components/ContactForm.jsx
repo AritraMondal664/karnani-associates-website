@@ -123,6 +123,9 @@ const ContactForm = () => {
                 <p className="text-lg break-all">
                   aadarsh.kabra@dkk.co.in
                 </p>
+                <p className="text-lg break-all">
+                  dilip.karnani@dkk.co.in
+                </p>
               </div>
 
               <div>
